@@ -22,9 +22,18 @@ for (const TextElement of text) {
 }
 
 // Scroll spy 
-
+let scrolling;
 let navLinks = document.querySelectorAll("a.menu__link") 
 window.onscroll = () => {
+    window.clearTimeout( scrolling );
+    document.getElementById('navbar__list').classList.remove('not-display')
+	// Set a timeout to run after scrolling ends
+	scrolling = setTimeout(function() {
+		// Run the callback
+		console.log('stop');
+        document.getElementById('navbar__list').classList.add('not-display');
+
+	}, 5000);
     sections.forEach(section => {
         let top = window.scrollY;
         console.log(top)
@@ -50,10 +59,10 @@ window.onscroll = () => {
     console.log(good_time);
     if (window.scrollY > good_time) {
         document.getElementById('back-to-top').style.display = 'block'; 
-        console.log(true);
+        // console.log(true);
     } else {
         document.getElementById('back-to-top').style.display = 'none';
-        console.log(false)
+        // console.log(false)
     }
 }
 
