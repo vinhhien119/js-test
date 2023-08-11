@@ -35,13 +35,32 @@ window.onscroll = () => {
 
         if (top > offset && top < offset + height ) {
             navLinks.forEach (n => {
-                console.log(id)
-                console.log(offset)
-                console.log(offset + height)
+                // console.log(id)
+                // console.log(offset)
+                // console.log(offset + height)
                 n.classList.remove('active')
             })
             document.querySelector('a[href *= '+ id +']').classList.add('active')
         }
     })
+
+    // Back to top button
+    console.log(document.querySelector('footer').offsetTop);
+    let good_time = document.querySelector('footer').offsetTop - (window.innerHeight);
+    console.log(good_time);
+    if (window.scrollY > good_time) {
+        document.getElementById('back-to-top').style.display = 'block'; 
+        console.log(true);
+    } else {
+        document.getElementById('back-to-top').style.display = 'none';
+        console.log(false)
+    }
+}
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0, 
+        behavior: 'smooth'
+    });
 }
 
