@@ -34,6 +34,27 @@ window.onscroll = () => {
         document.getElementById('navbar__list').classList.add('not-display');
 
 	}, 5000);
+    checkActiveSection();
+
+    displayBackToTop();
+    
+}
+// Back to top button
+function displayBackToTop() {
+    console.log(document.querySelector('footer').offsetTop);
+    let good_time = document.querySelector('footer').offsetTop - (window.innerHeight);
+    console.log(good_time);
+    if (window.scrollY > good_time) {
+        document.getElementById('back-to-top').style.display = 'block'; 
+        // console.log(true);
+    } else {
+        document.getElementById('back-to-top').style.display = 'none';
+        // console.log(false)
+    }
+}
+
+// Check active seciton
+function checkActiveSection() {
     sections.forEach(section => {
         let top = window.scrollY;
         console.log(top)
@@ -52,18 +73,6 @@ window.onscroll = () => {
             document.querySelector('a[href *= '+ id +']').classList.add('active')
         }
     })
-
-    // Back to top button
-    console.log(document.querySelector('footer').offsetTop);
-    let good_time = document.querySelector('footer').offsetTop - (window.innerHeight);
-    console.log(good_time);
-    if (window.scrollY > good_time) {
-        document.getElementById('back-to-top').style.display = 'block'; 
-        // console.log(true);
-    } else {
-        document.getElementById('back-to-top').style.display = 'none';
-        // console.log(false)
-    }
 }
 
 function scrollToTop() {
